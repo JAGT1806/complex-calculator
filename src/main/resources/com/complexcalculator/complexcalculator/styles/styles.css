@@ -1,0 +1,38 @@
+/* General */
+.root {
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-background-color: #f4f4f4;
+}
+
+.label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #333;
+    -fx-font-weight: bold;
+}
+
+.text-field {
+    -fx-border-color: #888;
+    -fx-border-radius: 5;
+    -fx-padding: 5;
+    -fx-alignment: CENTER_RIGHT;
+}
+
+.button {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-padding: 10;
+    -fx-border-radius: 4;
+}
+
+.button:hover {
+    -fx-background-color: #45A049;
+}
+
+/* Tabs */
+.tab {
+    -fx-background-color: #f4f4f4;
+}
+
+.tab:selected {
+    -fx-background-color: #ddd;
+}

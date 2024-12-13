@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.complexcalculator.complexcalculator.ComplexCalculatorController"
+      spacing="10">
+  <padding>
+    <Insets top="15" right="15" bottom="15" left="15"/>
+  </padding>
+
+  <TabPane VBox.vgrow="ALWAYS">
+    <Tab text="Binómica" closable="false">
+      <VBox spacing="20" alignment="TOP_CENTER">
+        <padding>
+          <Insets top="15" right="15" bottom="15" left="15"/>
+        </padding>
+
+        <VBox spacing="10" alignment="CENTER">
+          <HBox spacing="10" alignment="CENTER">
+            <Label text="Número 1: " />
+            <TextField fx:id="realField1" promptText="Real" alignment="CENTER" />
+            <TextField fx:id="imaginaryField1" promptText="Imaginario" />
+            <Label text="i" />
+          </HBox>
+        </VBox>
+
+        <Separator />
+
+        <VBox spacing="10" alignment="CENTER">
+          <HBox spacing="10" alignment="CENTER">
+            <Label text="Número 2: " />
+            <TextField fx:id="realField2" promptText="Real" />
+            <TextField fx:id="imaginaryField2" promptText="Imaginario" />
+            <Label text="i" />
+          </HBox>
+
+        </VBox>
+
+        <HBox spacing="10" alignment="CENTER">
+          <RadioButton text="Sumar" fx:id="binomicAddRadio" selected="true">
+            <toggleGroup>
+              <ToggleGroup fx:id="binomicOperationGroup"/>
+            </toggleGroup>
+          </RadioButton>
+          <RadioButton text="Restar" toggleGroup="$binomicOperationGroup"/>
+          <RadioButton text="Multiplicar" toggleGroup="$binomicOperationGroup"/>
+          <RadioButton text="Dividir" toggleGroup="$binomicOperationGroup"/>
+        </HBox>
+
+        <Button text="Calcular" onAction="#calculateBinomicResult" />
+      </VBox>
+    </Tab>
+
+    <Tab text="Polar" closable="false">
+      <VBox spacing="20" alignment="TOP_CENTER">
+        <padding>
+          <Insets top="15" right="15" bottom="15" left="15"/>
+        </padding>
+
+        <VBox spacing="10" alignment="CENTER">
+          <HBox spacing="10" alignment="CENTER">
+            <Label text="Número 1: " />
+            <TextField fx:id="moduleField1" promptText="Módulo" alignment="CENTER" />
+            <Label text="cis(" />
+            <TextField fx:id="angleField1" promptText="Ángulo" />
+            <Label text=")" />
+          </HBox>
+        </VBox>
+
+        <Separator />
+
+        <VBox spacing="10" alignment="CENTER">
+          <HBox spacing="10" alignment="CENTER">
+            <Label text="Número 2: " />
+            <TextField fx:id="moduleField2" promptText="Módulo" />
+            <Label text="cis(" />
+            <TextField fx:id="angleField2" promptText="Ángulo" />
+            <Label text=")" />
+          </HBox>
+
+        </VBox>
+
+        <HBox spacing="10" alignment="CENTER">
+          <RadioButton text="Multiplicar" selected="true">
+            <toggleGroup>
+              <ToggleGroup fx:id="polarOperationGroup"/>
+            </toggleGroup>
+          </RadioButton>
+          <RadioButton text="Dividir" toggleGroup="$polarOperationGroup"/>
+          <RadioButton text="Potencia" toggleGroup="$polarOperationGroup"/>
+          <RadioButton text="Raíz" toggleGroup="$polarOperationGroup" />
+        </HBox>
+
+        <HBox spacing="10" alignment="CENTER">
+          <TextField fx:id="powField" promptText="Exponente / índice de Raíz" />
+        </HBox>
+
+        <Button text="Calcular" onAction="#calculatePolarResult" />
+        <Label text="Nota: Operaciones cómo potencia y raíz solo tomará el Número 1" wrapText="true" />
+      </VBox>
+    </Tab>
+
+    <Tab text="Conversión" closable="false">
+      <VBox spacing="20" alignment="TOP_CENTER">
+        <padding>
+          <Insets top="15" right="15" bottom="15" left="15"/>
+        </padding>
+
+        <VBox spacing="10" alignment="CENTER">
+          <HBox spacing="10" alignment="CENTER">
+            <Label text="Número binómico: " />
+            <TextField fx:id="realTextField" promptText="Real" />
+            <TextField fx:id="imaginaryTextField" promptText="Imaginario" />
+            <Label text="i" />
+          </HBox>
+          <Button text="Binómica → Polar" onAction="#convertToPolar" />
+        </VBox>
+
+        <Separator />
+
+        <VBox spacing="10" alignment="CENTER">
+          <HBox spacing="10" alignment="CENTER">
+            <Label text="Número Polar: " />
+            <TextField fx:id="moduleTextField" promptText="Módulo" />
+            <Label text="cis(" />
+            <TextField fx:id="angleTextField" promptText="Ángulo" />
+            <Label text=")" />
+          </HBox>
+          <Button text="Polar → Binómica" onAction="#convertToBinomial" />
+        </VBox>
+      </VBox>
+    </Tab>
+
+    <Tab text="Historial" closable="false">
+      <VBox spacing="10">
+        <padding>
+          <Insets top="15" right="15" bottom="15" left="15"/>
+        </padding>
+        <Label text="Historial de operaciones" />
+        <ListView fx:id="historyList" VBox.vgrow="ALWAYS" />
+        <Button text="Limpiar Historial" onAction="#clearHistory" />
+      </VBox>
+    </Tab>
+  </TabPane>
+
+  <Label fx:id="resultLabel" text="Resultado: " wrapText="true"/>
+</VBox>
